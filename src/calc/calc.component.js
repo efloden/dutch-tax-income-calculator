@@ -25,7 +25,7 @@ let calcComponent = {
       checked: !!+$location.search().ruling || false,
       choice: $location.search().rulingChoice || 'normal',
     }
-
+    
     this.output = [
       {
         'name': 'grossAllowance',

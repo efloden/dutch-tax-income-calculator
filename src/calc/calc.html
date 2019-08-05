@@ -22,10 +22,10 @@
         <div flex>
           {{item.title}}
         </div>
-        <div flex class="report-value" ng-if="item.name == 'taxFree'">
+        <div flex id="{{item.name}}" class="report-value}" ng-if="item.name == 'taxFree'">
           {{$ctrl.salary[item.name] | number:0 }}%
         </div>
-        <div flex class="report-value" ng-if="item.name != 'taxFree'" ng-class="{'report-value-negative': $ctrl.salary[item.name] < 0}">
+        <div flex id="{{item.name}}" class="report-value" ng-if="item.name != 'taxFree'" ng-class="{'report-value-negative': $ctrl.salary[item.name] < 0}">
           {{($ctrl.salary[item.name] > 0 && item.sign === '+')? '+' : ''}}{{$ctrl.salary[item.name] | currency:" € ":0}}
         </div>
       </div>
@@ -37,32 +37,32 @@
         <div layout="column" layout-margin>
           <label>Calendar year:</label>
           <md-radio-group ng-model="$ctrl.year" >
-            <md-radio-button ng-repeat="year in $ctrl.years" value="{{year}}">{{year}}</md-radio-button>
+            <md-radio-button id="year-{{year}}" ng-repeat="year in $ctrl.years" value="{{year}}">{{year}}</md-radio-button>
           </md-radio-group>
         </div>
       </md-content>
       <md-content>
         <div layout="column" layout-margin>
-          <md-checkbox ng-model="$ctrl.salary.allowance" aria-label="Gross salary provided includes 8% of holiday allowance" title="Gross salary provided includes 8% of holiday allowance">
+          <md-checkbox id="hollidayAllowance" ng-model="$ctrl.salary.allowance" aria-label="Gross salary provided includes 8% of holiday allowance" title="Gross salary provided includes 8% of holiday allowance">
             Holiday allowance included
           </md-checkbox>
-          <md-checkbox ng-model="$ctrl.salary.socialSecurity" aria-label="Social security in the Netherlands" title="Social security in the Netherlands">
+          <md-checkbox id="socialSecurity" ng-model="$ctrl.salary.socialSecurity" aria-label="Social security in the Netherlands" title="Social security in the Netherlands">
             Social security
           </md-checkbox>
-          <md-checkbox ng-model="$ctrl.salary.older" aria-label="Retirement age or older" title="Retirement age or older">
+          <md-checkbox id="older65" ng-model="$ctrl.salary.older" aria-label="Retirement age or older" title="Retirement age or older">
             65 years or older
           </md-checkbox>
-          <md-checkbox ng-model="$ctrl.ruling.checked" aria-label="Tax benefit rule for up-to 30% of gross salary" title="Tax benefit rule for up-to 30% of gross salary">
+          <md-checkbox id="30PerRuling" ng-model="$ctrl.ruling.checked" aria-label="Tax benefit rule for up-to 30% of gross salary" title="Tax benefit rule for up-to 30% of gross salary">
             30% ruling
           </md-checkbox>
-          <md-radio-group ng-if="$ctrl.ruling.checked" ng-model="$ctrl.ruling.choice" ng-disabled="!$ctrl.ruling.checked">
-            <md-radio-button value="research" aria-label="Working with scientific research" title="Working with scientific research">
+          <md-radio-group id="rulingChecked" ng-if="$ctrl.ruling.checked" ng-model="$ctrl.ruling.choice" ng-disabled="!$ctrl.ruling.checked">
+            <md-radio-button id="scientificResearch" value="research" aria-label="Working with scientific research" title="Working with scientific research">
               Scientific research
             </md-radio-button>
-            <md-radio-button value="young" aria-label="Employee with a master’s degree and younger than 30 years" title="Employee with a master’s degree and younger than 30 years">
+            <md-radio-button id="youngEmployee" value="young" aria-label="Employee with a master’s degree and younger than 30 years" title="Employee with a master’s degree and younger than 30 years">
               Young employee with masters
             </md-radio-button>
-            <md-radio-button value="normal" aria-label="None of the above" title="None of the above">
+            <md-radio-button id="otherRuling" value="normal" aria-label="None of the above" title="None of the above">
               Other
             </md-radio-button>
           </md-radio-group>
