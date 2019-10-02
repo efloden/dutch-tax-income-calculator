@@ -8,7 +8,8 @@
     "postinstall": "webpack",
     "build": "webpack -p --progress --colors && cp ./src/manifest.json ./dist/manifest.json && cp ./src/sw.js ./dist/dit-sw.js",
     "deploy": "webpack -p && gh-pages -d dist",
-    "test": "./node_modules/.bin/wdio"
+    "test-basic": "./node_modules/.bin/wdio --spec basic.js",
+    "test-advanced": "./node_modules/.bin/wdio --spec advanced.js"
   },
   "repository": {
     "type": "git",
